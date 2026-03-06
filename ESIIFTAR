@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رسائل 🌙 | أنس الروح</title>
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Cairo', 'Amiri', serif;
+      background: radial-gradient(circle at 10% 30%, #1e1428, #0c0712);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* floating moons and stars – elegant background animation */
+    .orb {
+      position: absolute;
+      background: rgba(255, 215, 140, 0.1);
+      border-radius: 50%;
+      box-shadow: 0 0 40px #f9c74f33;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .orb1 { width: 250px; height: 250px; top: -50px; left: -80px; background: radial-gradient(circle, #f9c74f15, transparent 80%); }
+    .orb2 { width: 400px; height: 400px; bottom: -120px; right: -100px; background: radial-gradient(circle, #b380ff15, transparent 80%); }
+    .orb3 { width: 180px; height: 180px; top: 40%; right: 5%; background: radial-gradient(circle, #ffb4a215, transparent 80%); }
+
+    .floating {
+      position: absolute;
+      font-size: 2.2rem;
+      opacity: 0.2;
+      animation: float 12s infinite alternate ease-in-out;
+      z-index: 0;
+      color: #f9c74f;
+    }
+    .star1 { top: 15%; left: 8%; animation-delay: 0s; }
+    .star2 { bottom: 18%; right: 12%; animation-delay: 3s; }
+    .star3 { top: 25%; right: 20%; animation-delay: 1.5s; }
+    .star4 { bottom: 30%; left: 15%; animation-delay: 5s; }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0.15; }
+      100% { transform: translateY(-30px) rotate(8deg); opacity: 0.35; }
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(249, 199, 79, 0.25);
+      border-radius: 48px;
+      box-shadow: 0 35px 70px -10px rgba(0,0,0,0.6), 0 0 0 1px rgba(249, 199, 79, 0.1) inset;
+      width: 100%;
+      max-width: 800px;
+      padding: 2.8rem 2rem;
+      position: relative;
+      z-index: 10;
+      transition: box-shadow 0.4s;
+    }
+
+    .glass-card:hover {
+      box-shadow: 0 40px 80px -5px #00000080, 0 0 0 2px #f9c74f30 inset;
+    }
+
+    h1 {
+      font-size: 3.3rem;
+      font-weight: 700;
+      color: #f9d56e;
+      text-shadow: 0 4px 15px #ffb34780, 0 0 20px #f9c74f;
+      margin-bottom: 0.25rem;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    h1 i {
+      font-size: 3rem;
+      color: #f1c40f;
+      filter: drop-shadow(0 0 8px gold);
+    }
+
+    .sub {
+      color: #e8d1ff;
+      font-size: 1.3rem;
+      margin-bottom: 2.5rem;
+      border-bottom: 2px dashed #f9c74f50;
+      padding-bottom: 1rem;
+      display: inline-block;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+
+    /* message area — elegant creative display */
+    .message-wrapper {
+      background: rgba(25, 15, 35, 0.65);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-radius: 60px;
+      padding: 1.2rem 1.8rem;
+      border: 1px solid #f9c74f40;
+      box-shadow: 0 15px 35px -8px #1a0f1e, 0 10px 20px -10px #00000099, inset 0 1px 2px #ffffff26;
+      margin: 2rem 0 1.5rem;
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    #message {
+      font-family: 'Amiri', 'Cairo', serif;
+      font-size: 1.9rem;
+      line-height: 1.7;
+      color: #fef7e9;
+      text-align: center;
+      word-spacing: 2px;
+      font-weight: 500;
+      text-shadow: 0 2px 5px #00000050;
+      transition: opacity 0.4s, transform 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      padding: 0.5rem 0.2rem;
+    }
+
+    /* creative animation classes */
+    .message-enter {
+      opacity: 0;
+      transform: scale(0.7) translateY(30px);
+    }
+
+    .message-enter-active {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+
+    /* decorative verse separator */
+    .verse-decoration {
+      font-size: 2.2rem;
+      color: #f9c74f;
+      opacity: 0.6;
+      margin: 0.5rem 0 0.2rem;
+      line-height: 0;
+    }
+
+    .verse-decoration span {
+      margin: 0 20px;
+    }
+
+    /* button + counter */
+    .btn-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .ramadan-btn {
+      background: linear-gradient(145deg, #b472e0, #8b5cc7);
+      border: none;
+      border-radius: 50px;
+      padding: 1rem 3rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffefc0;
+      cursor: pointer;
+      box-shadow: 0 12px 25px #2b0f3a, 0 5px 0 #4f2d7a, 0 0 15px #f9c74f80;
+      transition: 0.15s ease-out;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid #f9d56e80;
+      letter-spacing: 1px;
+    }
+
+    .ramadan-btn i {
+      font-size: 1.7rem;
+      color: #ffe68f;
+    }
+
+    .ramadan-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 30px #2b0f3a, 0 7px 0 #5b3a86, 0 0 25px #fce083;
+      background: linear-gradient(145deg, #c187f0, #9f70dd);
+    }
+
+    .ramadan-btn:active {
+      transform: translateY(4px);
+      box-shadow: 0 5px 0 #4f2d7a, 0 0 25px #f9c74f;
+    }
+
+    .counter-badge {
+      background: #221a2f;
+      border-radius: 60px;
+      padding: 0.6rem 1.5rem;
+      border: 1px solid #f9c74f60;
+      color: #e9d7ff;
+      font-size: 1.3rem;
+      font-weight: 500;
+      backdrop-filter: blur(5px);
+      box-shadow: inset 0 0 10px #00000050;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .counter-badge i {
+      color: #f9c74f;
+    }
+
+    .footer-note {
+      margin-top: 2rem;
+      font-size: 1rem;
+      color: #b9a3d9;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      opacity: 0.8;
+    }
+
+    .footer-note i {
+      color: #f9c74f;
+      margin: 0 5px;
+    }
+
+    /* responsive */
+    @media (max-width: 500px) {
+      h1 { font-size: 2.4rem; }
+      #message { font-size: 1.5rem; }
+      .glass-card { padding: 1.8rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- floating background elements -->
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="floating star1">🌙</div>
+  <div class="floating star2">✨</div>
+  <div class="floating star3">🕌</div>
+  <div class="floating star4">☪️</div>
+
+  <div class="glass-card">
+    <h1>
+      <i class="fas fa-star"></i>
+      رسالة لك
+      <i class="fas fa-star"></i>
+    </h1>
+    <div class="sub">كل ضغطة هدية من نور</div>
+
+    <!-- message box with decorative dividers -->
+    <div class="verse-decoration"><span>❁</span> <i class="fas fa-moon"></i> <span>❁</span></div>
+    
+    <div class="message-wrapper">
+      <div id="message">✨ اضغط لتحظى برسالة ✨</div>
+    </div>
+
+    <div class="verse-decoration"><span>۞</span> <i class="fas fa-lantern"></i> <span>۞</span></div>
+
+    <!-- button & extra feature: counter of messages displayed -->
+    <div class="btn-container">
+      <button class="ramadan-btn" onclick="showCreativeMessage()">
+        <i class="fas fa-envelope-open-text"></i>
+        رسالة جديدة
+      </button>
+      <div class="counter-badge">
+        <i class="fas fa-book-open"></i>
+        <span id="msgCounter">0</span>
+        <span>رسالة</span>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      <span><i class="fas fa-moon"></i> رمضان مبارك</span>
+      <span><i class="fas fa-heart"></i> الشمس</span>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // ----- مصفوفة الرسائل (الآيات الكريمة) -----
+      const messages = [
+        "وَاصْبِرْ لِحُكْمِ رَبِّكَ فَإِنَّكَ بِأَعْيُنِنَا ۖ وَسَبِّحْ بِحَمْدِ رَبِّكَ حِينَ تَقُومُ",
+        "لَا تَدْرِي لَعَلَّ اللَّهَ يُحْدِثُ بَعْدَ ذَٰلِكَ أَمْرًا",
+        "وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا",
+        "وَيَرْزُقْهُ مِنْ حَيْثُ لَا يَحْتَسِبُ ۚ وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ ۚ إِنَّ اللَّهَ بَالِغُ أَمْرِهِ ۚ قَدْ جَعَلَ اللَّهُ لِكُلِّ شَيْءٍ قَدْرًا",
+        "وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَىٰ",
+        "فَاسْتَجَبْنَا لَهُ فَكَشَفْنَا مَا بِهِ مِنْ ضُرٍ",
+        "إِنَّ الَّذينَ آمَنوا وَعَمِلُوا الصّالِحاتِ سَيَجعَلُ لَهُمُ الرَّحمنُ وُدًّا",
+        "إِنَّ اللَّهَ كانَ بِكُم رَحيمًا",
+        "وَمَا كَانَ رَبُّكَ نَسِيًّا",
+        "وَلَيُبَدِّلَنَّهُم مِّن بَعْدِ خَوْفِهِمْ أَمْنًا ۚ",
+        "لَهُمُ الْبُشْرَىٰ ۚ فَبَشِّرْ عِبَادِ",
+        "إِنَّمَا يُوَفَّى الصَّابِرُونَ أَجْرَهُمْ بِغَيْرِ حِسَابٍ",
+        "إِنَّهُ عَلِيمٌ بِذَاتِ الصُّدُورِ",
+        "هُوَ اللَّهُ الْوَاحِدُ الْقَهَّارُ ",
+        "فَمَنَّ اللَّهُ عَلَيْنَا",
+        "وَيَعْفُو عَن كَثِيرٍ",
+        "وَلَا يَظْلِمُ رَبُّكَ أَحَدًا",
+        "وَاصْطَبِرْ",
+        "سَيَجعَلُ اللَّهُ بَعدَ عُسرٍ يُسرًا",
+        "إِنَّهُ سَمِيعٌ قَرِيبٌ",
+        "إِنَّ رَبَّكَ فَعَّالٌ لِّمَا يُرِيدُ",
+        "وَفِي السَّمَاء رِزْقُكُمْ وَمَا تُوعَدُونَ",
+        "إِنَّمَا تُوعَدُونَ لَصَادِقٌ",
+        "وَمَا كَانَ اللَّهُ لِيُعْجِزَهُ مِن شَيْءٍ فِي السَّمَاوَاتِ وَلا فِي الأَرْضِ إِنَّهُ كَانَ عَلِيمًا قَدِيرًا",
+        "وَلَا تَيْأَسُوا مِن رَّوْحِ اللَّهِ",
+        "إِنَّ رَبِّي لَطِيفٌ لِّمَا يَشَاء إِنَّهُ هُوَ الْعَلِيمُ الْحَكِيمُ",
+        "إِن تَكُونُواْ صَالِحِينَ فَإِنَّهُ كَانَ لِلأَوَّابِينَ غَفُورًا",
+        "فَلَا تَعْلَمُ نَفْسٌ مَّا أُخْفِيَ لَهُم مِّن قُرَّةِ أَعْيُنٍ جَزَاءً بِمَا كَانُوا يَعْمَلُونَ",
+        "وَلَا تَحْزَنْ ۖ إِنَّا مُنَجُّوكَ",
+        "وَمَا كَانَ اللَّهُ لِيُعْجِزَهُ مِن شَيْءٍ",
+        "فَبَشَّرْنَاهَا",
+        "فَاذْكُرُونِي أَذْكُرْكُمْ",
+        "وَأُفَوِّضُ أَمْرِي إِلَى اللَّهِ ۚ إِنَّ اللَّهَ بَصِيرٌ بِالْعِبَادِ",
+        "فَفِرُّوا إِلَى اللَّهِ ۖ",
+        "فَاذْكُرُونِي أَذْكُرْكُمْ",
+        "وَإِن يَمْسَسْكَ اللَّهُ بِضُرٍّ فَلَا كَاشِفَ لَهُ إِلَّا هُو",
+        "قَالَ قَدْ أُوتِيتَ سُؤْلَكَ يَا مُوسَىٰ",
+        "يُرِيدُ اللَّهُ أَن يُخَفِّفَ عَنكُمْ ۚ وَخُلِقَ الْإِنسَانُ ضَعِيفًا",
+        "أَلا إِنَّ نَصْرَ اللَّهِ قَرِيبٌ",
+        "أَمَّن يُجِيبُ الْمُضْطَرَّ إِذَا دَعَاهُ وَيَكْشِفُ السُّوءَ",
+        "وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌ أُجِيبُ دَعْوَةَ الدَّاعِ إِذَا دَعَانِ",
+        "وَأَن لَيسَ لِلإِنسانِ إِلّا ما سَعى * وَأَنَّ سَعيَهُ سَوفَ يُرَىٰ * ثُمَّ يُجْزَاهُ الجَزَاءَ الأَوْفَىٰ",
+        "وَيُتِمَّ نِعْمَتَهُ عَلَيْكَ",
+        "وَنَحْنُ أَقْرَبُ إِلَيْهِ مِنْ حَبْلِ الْوَرِيدِ",
+        "وَكَفَىٰ بِرَبِّكَ وَكِيلًا ",
+        "قلْ عَسَىٰ أَن يَكُونَ قَرِيبًا",
+        "وَمَا كَانَ عَطَاءُ رَبِّكَ مَحْظُورًا",
+        "وَكَانَ اللَّهُ عَلَىٰ كُلِّ شَيْءٍ مُّقْتَدِرًا ",
+        "وَاذْكُر رَّبَّكَ إِذَا نَسِيتَ",
+        "إِنَّا مُنَجُّوكَ",
+        "فَاسْتَجَبْنَا لَهُ",
+        "فَأَنْجَيْنَاهُ وَالَّذِينَ مَعَهُ بِرَحْمَةٍ مِنَّا",
+        "نَبِّىءْ عِبَادِي أَنِّي أَنَا الْغَفُورُ الرَّحِيمُ",
+        "وَمَا ذَلِكَ عَلَى اللَّهِ بِعَزِيزٍ",
+        "فَصَبْرٌ جَمِيلٌ" ,
+        "وَمَن لَّمْ يَجْعَلِ اللَّهُ لَهُ نُورًا فَمَا لَهُ مِن نُّورٍ",
+        "وَيُنَزِّلُ لَكُم مِّنَ السَّمَاءِ رِزْقًا ۚ",
+        "قَالَ رَبِّ اغْفِرْ لِي وَهَبْ لِي مُلْكًا لَا يَنْبَغِي لِأَحَدٍ مِنْ بَعْدِي ۖ إِنَّكَ أَنْتَ الْوَهَّابُ",
+        "أَلَّا تَحْزَنِي",
+      ];
+
+      // عناصر DOM
+      const msgDiv = document.getElementById('message');
+      const counterSpan = document.getElementById('msgCounter');
+
+      // عداد الرسائل المستخدم
+      let messageCount = 0;
+
+      // دالة تحدث الرسالة بشكل أنيق مع تأثيرات دخول
+      function showCreativeMessage() {
+        // اختيار عشوائي
+        const randomIndex = Math.floor(Math.random() * messages.length);
+        const newMessage = messages[randomIndex];
+
+        // زيادة العداد وتحديثه
+        messageCount++;
+        counterSpan.innerText = messageCount;
+
+        // تطبيق تأثير الدخول: نزيل أي كلاس انتقالي قديم، ثم نضيف effect
+        // نستخدم كلاس message-enter لبدء الاختفاء ثم نزيله بعد فرصة ليظهر التأثير
+        msgDiv.classList.remove('message-enter-active'); // نضمن أن العنصر بدأ طبيعي
+        // نضيف enter (البداية)
+        msgDiv.classList.add('message-enter');
+
+        // force reflow لتفعيل الانتقال
+        void msgDiv.offsetWidth;
+
+        // تغيير النص (يحدث بعد إضافة كلاس البداية مباشرة)
+        msgDiv.innerText = newMessage;
+
+        // بعد تغيير النص نبدي الانتقال إلى الحالة النهائية
+        msgDiv.classList.add('message-enter-active');
+
+        // اختياري: بعد انتهاء المدة نزيل كلاس البداية (يبقى active فقط)
+        setTimeout(() => {
+          msgDiv.classList.remove('message-enter');
+          // لكن نحتفظ active ليبقى visible، يمكن إزالة الاثنين معاً بعد وقت أطول لكن نفضل بقاءه
+        }, 50); // زمن قصير بعد بدء الانتقال
+
+        // تأكد من بقاء animation نظيف: بعد 600ms نزيل message-enter لو لا يزال موجوداً (لأي سبب)
+        setTimeout(() => {
+          msgDiv.classList.remove('message-enter');
+        }, 600);
+      }
+
+      // (اختياري) تهيئة أول رسالة عند تحميل الصفحة بشكل لطيف
+      window.addEventListener('load', () => {
+        // نعطي ترحيب بأول رسالة بعد تحميل الصفحة بثانية
+        setTimeout(() => {
+          showCreativeMessage();
+        }, 800);
+      });
+
+      // ربط الدالة مع النطاق العام (للاستخدام في onclick)
+      window.showCreativeMessage = showCreativeMessage;
+
+      // يمكن أيضاً إضافة تأثير عند بداية الصفحة: جعل العداد صفراً
+      counterSpan.innerText = '0';
+    })();
+  </script>
+</body>
+</html>
